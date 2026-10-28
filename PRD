@@ -1,0 +1,387 @@
+SIKA
+
+Product Requirements Document (PRD) v0.1
+
+Status: Draft awal
+Tahap: Perumusan produk
+Platform: Responsive web app, mobile-first
+Target pengujian awal: 3 pengguna
+Pendekatan AI: Multi-provider, evidence-based research, bertahap
+
+---
+
+1. Ringkasan Produk
+
+SIKA adalah asisten AI yang berfokus pada ekonomi, bisnis, dan keuangan. SIKA dirancang untuk membantu pengguna memahami masalah, meneliti informasi, mengevaluasi klaim, menganalisis peluang, dan mempertimbangkan keputusan dengan dukungan bukti yang dapat diperiksa.
+
+SIKA tidak hanya bertujuan menghasilkan jawaban yang terdengar meyakinkan. Sistem harus dirancang untuk menjelaskan dasar kesimpulannya, menunjukkan sumber yang relevan, membedakan fakta dari asumsi, dan mengungkapkan keterbatasan informasi.
+
+Produk dikembangkan dari nol dengan pendekatan bertahap. Pengujian awal dilakukan oleh tiga pengguna, tetapi fondasi arsitekturnya harus mendukung banyak pengguna sejak awal.
+
+1.1 Visi
+
+Menjadi asisten riset dan pengambilan keputusan yang membantu masyarakat memahami ekonomi, bisnis, dan keuangan secara lebih kritis, terstruktur, dan berbasis bukti.
+
+1.2 Prinsip Produk
+
+1. Evidence over confidence.
+2. Verifiable claims over unsupported claims.
+3. Transparency over false certainty.
+4. Useful analysis over unnecessary complexity.
+5. Responsible AI usage over uncontrolled model calls.
+6. Modular architecture over unnecessary dependencies.
+7. Measurable quality over unverified completion claims.
+
+2. Masalah yang Ingin Diselesaikan
+
+Pengguna yang mempelajari ekonomi, bisnis, dan keuangan menghadapi beberapa masalah:
+
+- Informasi tersebar di banyak sumber dengan tingkat kredibilitas berbeda.
+- Jawaban AI dapat terdengar meyakinkan meskipun tidak memiliki dukungan bukti yang memadai.
+- Pengguna kesulitan membedakan fakta, asumsi, opini, dan prediksi.
+- Analisis bisnis sering tidak menjelaskan asumsi perhitungan dan risiko.
+- Riset membutuhkan waktu untuk mencari, membandingkan, dan mengevaluasi informasi.
+- Pengguna membutuhkan penjelasan yang mudah dipahami tanpa menghilangkan ketelitian analisis.
+
+SIKA bertujuan membantu mengatasi masalah tersebut melalui alur riset yang terstruktur dan transparan.
+
+3. Target Pengguna
+
+3.1 Pengguna awal
+
+Tiga pengguna akan terlibat dalam pengujian awal.
+
+Tujuannya adalah menguji fungsi produk, pengalaman penggunaan, kualitas analisis, dan ketahanan terhadap kegagalan sebelum memperluas akses.
+
+3.2 Target pengguna jangka panjang
+
+- Pelajar dan pembelajar mandiri.
+- Individu yang ingin memahami ekonomi dan keuangan.
+- Pemilik usaha kecil dan calon pengusaha.
+- Pengguna yang membutuhkan bantuan riset bisnis.
+- Pengguna yang ingin mengevaluasi klaim ekonomi atau finansial.
+- Pengguna yang membutuhkan analisis untuk membantu proses pengambilan keputusan.
+
+Target ini merupakan arah produk, bukan bukti bahwa kebutuhan semua kelompok tersebut sudah divalidasi melalui riset pengguna.
+
+4. Ruang Lingkup Versi Pertama
+
+4.1 P0: Fitur wajib
+
+A. AI Assistant
+
+Pengguna dapat mengajukan pertanyaan terkait ekonomi, bisnis, dan keuangan.
+
+Persyaratan:
+
+- Menerima pertanyaan dalam bahasa alami.
+- Menghasilkan jawaban yang relevan dengan konteks.
+- Menyampaikan keterbatasan apabila informasi tidak memadai.
+- Tidak mengaku telah melakukan pencarian atau verifikasi apabila proses tersebut tidak dilakukan.
+- Menangani kegagalan provider tanpa kehilangan kendali atas alur aplikasi.
+
+B. Evidence-Based Research
+
+SIKA dapat menjalankan proses riset bertahap untuk pertanyaan yang memerlukan bukti eksternal.
+
+Alur:
+
+1. Memahami pertanyaan.
+2. Menentukan kebutuhan informasi.
+3. Menyusun strategi pencarian.
+4. Mengambil sumber eksternal melalui layanan pencarian yang dikonfigurasi.
+5. Memeriksa relevansi sumber terhadap klaim.
+6. Membandingkan temuan dan mengidentifikasi pertentangan.
+7. Menyusun analisis.
+8. Memeriksa dukungan bukti sebelum menyampaikan kesimpulan.
+
+Persyaratan:
+
+- Sumber harus benar-benar diperoleh melalui proses yang dijalankan.
+- Klaim yang didukung sumber harus dapat ditelusuri ke sumber tersebut.
+- Tanggal publikasi dan periode data harus diperhatikan ketika relevan.
+- Sumber yang tidak mendukung suatu klaim tidak boleh dipakai seolah-olah mendukungnya.
+- Jika sumber tidak cukup, sistem harus menyatakan keterbatasannya.
+- Sistem harus membedakan hasil pencarian, hasil verifikasi, dan kesimpulan analitis.
+
+Kemampuan pencarian web belum ditentukan penyedia dan implementasinya. Pemilihan layanan dilakukan pada tahap desain teknis.
+
+4.2 P1: Fitur setelah fondasi stabil
+
+C. Business Analysis
+
+Membantu pengguna menganalisis ide bisnis, biaya, pendapatan, margin, risiko, dan skenario.
+
+Persyaratan:
+
+- Menjelaskan asumsi yang digunakan.
+- Menunjukkan rumus atau dasar perhitungan yang relevan.
+- Membedakan data yang diberikan pengguna dari estimasi sistem.
+- Tidak menyajikan proyeksi sebagai hasil yang pasti.
+- Mengungkapkan data yang masih dibutuhkan untuk memperkuat analisis.
+
+D. Conversation History
+
+Memungkinkan pengguna menyimpan dan membuka kembali percakapan.
+
+Persyaratan:
+
+- Percakapan terhubung dengan identitas pemiliknya.
+- Pengguna tidak dapat membaca percakapan milik akun lain.
+- Akses data diperiksa di backend, bukan hanya disembunyikan di antarmuka.
+- Kebijakan penyimpanan dan penghapusan data ditentukan sebelum rilis publik.
+
+5. Standar Bukti dan Kualitas Jawaban
+
+SIKA harus membedakan empat kategori informasi:
+
+1. Fakta terverifikasi: klaim yang didukung bukti memadai sesuai konteks.
+2. Asumsi: kondisi yang digunakan dalam analisis tetapi belum dipastikan benar.
+3. Interpretasi: penalaran yang dibangun dari fakta dan asumsi.
+4. Ketidakpastian: bagian yang belum dapat dipastikan karena keterbatasan bukti, data, atau metode.
+
+Kategori tersebut tidak boleh diperlakukan sebagai label yang otomatis menjamin kebenaran. Sistem harus memiliki mekanisme pengujian untuk menilai apakah pelabelan dan kesimpulannya sesuai dengan bukti.
+
+Untuk riset eksternal, evaluasi setidaknya mencakup:
+
+- Relevansi sumber.
+- Kesesuaian sumber dengan klaim.
+- Kredibilitas penerbit atau penulis.
+- Kemutakhiran informasi.
+- Konsistensi angka, tanggal, dan satuan.
+- Pertentangan antar-sumber.
+- Keterbatasan data dan metode.
+
+6. Arsitektur Produk: Arah Awal
+
+Arsitektur berikut merupakan konsep yang perlu divalidasi, bukan keputusan teknologi final.
+
+Pengguna
+→ Web App
+→ Backend API
+→ Autentikasi dan pemeriksaan izin
+→ Application Orchestrator
+→ Research Workflow
+→ AI Provider Gateway dan layanan pencarian
+→ Evidence Validation
+→ Penyusunan jawaban
+→ Pengguna
+
+6.1 AI Provider Gateway
+
+SIKA dirancang agar dapat menggunakan lebih dari satu penyedia model.
+
+Kandidat awal:
+
+- OpenRouter.
+- NVIDIA NIM.
+
+Gateway harus memisahkan logika produk dari detail integrasi penyedia.
+
+Persyaratan:
+
+- Konfigurasi provider berada di backend.
+- API key tidak dikirim ke browser.
+- Provider dapat dipilih berdasarkan kebijakan, kemampuan, ketersediaan, dan biaya.
+- Kegagalan provider dicatat dan ditangani secara terkontrol.
+- Retry dibatasi.
+- Pergantian provider tidak boleh mengabaikan kebutuhan kualitas tugas.
+- Sistem mencatat model yang digunakan dan penggunaan yang relevan untuk evaluasi.
+
+Akses gratis hanya digunakan jika memenuhi ketentuan layanan terkait. Ketersediaan endpoint gratis tidak dijamin.
+
+6.2 Arsitektur Multi-User
+
+Sistem harus dirancang untuk banyak pengguna sejak awal.
+
+Persyaratan:
+
+- Identitas pengguna dikelola secara aman.
+- Akses ke data diperiksa di backend.
+- Data setiap pengguna diisolasi.
+- Batas penggunaan diterapkan per pengguna.
+- Aktivitas penting dicatat sesuai kebutuhan keamanan.
+- Tidak ada akses lintas akun tanpa izin yang sah.
+
+Teknologi autentikasi dan database belum ditentukan.
+
+7. Pengendalian Biaya AI
+
+Penggunaan model harus dikendalikan dari backend.
+
+Kontrol yang diperlukan:
+
+- Batas request per pengguna.
+- Batas pemanggilan model per tugas.
+- Batas token input dan output.
+- Batas iterasi riset.
+- Batas retry.
+- Pencatatan penggunaan per provider dan model.
+- Penanganan kuota habis.
+- Penghentian proses ketika batas tercapai.
+
+Pada tahap pengembangan, sistem mengutamakan opsi gratis yang tersedia dan sesuai ketentuan.
+
+Ketika kuota habis, sistem harus memberikan informasi yang jelas. Sistem tidak boleh menganggap bahwa provider lain pasti tersedia.
+
+Nilai numerik batas penggunaan ditentukan setelah pengujian awal dan evaluasi kuota aktual.
+
+8. Keamanan dan Privasi
+
+Persyaratan awal:
+
+- Rahasia aplikasi disimpan di sisi server.
+- Input pengguna diperlakukan sebagai data yang tidak otomatis tepercaya.
+- Konten eksternal tidak boleh mengesampingkan instruksi sistem hanya karena ditemukan dalam proses riset.
+- Akses data dibatasi sesuai identitas dan izin pengguna.
+- Kesalahan tidak membocorkan kredensial atau informasi internal sensitif.
+- Log tidak menyimpan data sensitif tanpa kebutuhan dan kontrol yang jelas.
+- Pemanggilan alat eksternal dibatasi sesuai izin.
+- Proses audit dan pengujian keamanan dilakukan dengan bukti yang dapat ditinjau.
+
+Detail kontrol, ancaman, dan prosedur verifikasi akan ditentukan dalam dokumen Security & Verification Plan.
+
+9. Persyaratan Nonfungsional
+
+Kinerja
+
+Aplikasi harus responsif pada perangkat seluler. Target waktu respons akan ditentukan setelah lingkungan deployment dan karakteristik tugas diketahui.
+
+Keandalan
+
+Kegagalan satu layanan tidak boleh menyebabkan proses berulang tanpa batas atau kehilangan kendali aplikasi.
+
+Skalabilitas
+
+Fondasi harus mendukung penambahan pengguna tanpa memerlukan perombakan mendasar terhadap pemisahan data dan kontrol akses.
+
+Kemudahan pemeliharaan
+
+Integrasi provider, alur riset, autentikasi, dan antarmuka harus memiliki batas tanggung jawab yang jelas.
+
+Observabilitas
+
+Sistem harus mencatat informasi yang cukup untuk mengevaluasi error, penggunaan AI, biaya, dan hasil pengujian tanpa mengumpulkan data sensitif secara berlebihan.
+
+Aksesibilitas
+
+Antarmuka harus dapat digunakan pada layar HP dengan struktur navigasi dan teks yang jelas.
+
+10. Strategi Pengujian
+
+Sebelum versi beta dinyatakan siap, pengujian harus mencakup:
+
+- Unit test untuk logika aplikasi.
+- Integration test untuk backend, database, provider, dan layanan pencarian.
+- Contract test untuk integrasi eksternal.
+- Test isolasi data antar-pengguna.
+- Test batas penggunaan dan kegagalan provider.
+- Test keamanan yang relevan dengan arsitektur.
+- Evaluasi kualitas jawaban dan dukungan bukti.
+- Regression test setelah perubahan.
+- Pengujian alur utama pada perangkat seluler.
+
+Pengujian yang belum dijalankan harus dilaporkan sebagai belum dijalankan. Keberadaan test file tidak membuktikan bahwa test telah lulus.
+
+Audit keamanan harus menghasilkan temuan dan bukti yang dapat diperiksa. Perbaikan dilakukan terpisah agar perubahan tidak mengaburkan hasil audit awal.
+
+11. Indikator Keberhasilan
+
+Untuk tahap awal, indikator keberhasilan berfokus pada kualitas dan keandalan.
+
+Indikator:
+
+- Alur utama dapat diselesaikan oleh ketiga pengguna pengujian.
+- Pengguna dapat mengakses fitur sesuai izin.
+- Tidak ditemukan kebocoran data lintas akun pada skenario pengujian yang ditentukan.
+- Klaim riset dapat ditelusuri ke sumber yang benar-benar digunakan.
+- Sistem tidak mengarang sumber ketika sumber tidak tersedia.
+- Perhitungan pada skenario uji sesuai dengan hasil yang diharapkan.
+- Penggunaan model tercatat dan batas penggunaan berfungsi.
+- Kegagalan provider ditangani secara terkendali.
+
+Ambang kelulusan kuantitatif harus ditetapkan sebelum evaluasi final, bukan dipilih setelah melihat hasil agar terlihat berhasil.
+
+12. Tahapan Implementasi
+
+Tahap 0: Finalisasi spesifikasi
+
+- Meninjau PRD.
+- Menentukan keputusan produk yang masih terbuka.
+- Menyusun SRS, desain teknis, dan rencana verifikasi.
+
+Tahap 1: Fondasi aplikasi
+
+- Antarmuka mobile-first.
+- Backend.
+- Autentikasi.
+- Isolasi data pengguna.
+
+Tahap 2: Integrasi AI
+
+- Provider Gateway.
+- Pengendalian penggunaan.
+- Penanganan error.
+- Pencatatan penggunaan.
+
+Tahap 3: Agen inti
+
+- Alur tanya jawab.
+- Pengelolaan konteks.
+- Validasi output.
+
+Tahap 4: Riset berbasis bukti
+
+- Integrasi pencarian.
+- Pengambilan sumber.
+- Pemeriksaan dukungan klaim.
+- Penyusunan laporan dengan keterbatasan yang jelas.
+
+Tahap 5: Verifikasi
+
+- Pengujian fungsional dan integrasi.
+- Audit keamanan.
+- Evaluasi kualitas AI.
+- Perbaikan berdasarkan temuan.
+
+Tahap 6: Beta
+
+- Pengujian oleh tiga pengguna.
+- Pencatatan masalah.
+- Evaluasi penggunaan dan biaya.
+- Penentuan prioritas pengembangan berikutnya.
+
+Setiap tahap harus memiliki kriteria penerimaan dan bukti hasil sebelum pekerjaan dilanjutkan.
+
+13. Keputusan yang Belum Final
+
+Hal-hal berikut belum boleh dianggap diputuskan:
+
+1. Pilihan framework frontend dan backend.
+2. Pilihan database dan layanan hosting.
+3. Penyedia pencarian web.
+4. Model AI yang dipakai untuk setiap jenis tugas.
+5. Kebijakan retensi dan penghapusan data.
+6. Anggaran operasional bulanan.
+7. Kebijakan penggunaan setelah kuota gratis habis.
+8. Ambang numerik untuk kinerja dan kualitas.
+9. Model bisnis dan monetisasi.
+10. Lisensi distribusi produk.
+
+Keputusan tersebut akan ditetapkan melalui evaluasi kebutuhan, keterbatasan, biaya, dan bukti yang relevan.
+
+14. Kriteria Persetujuan PRD
+
+PRD siap menjadi dasar implementasi setelah:
+
+- Ruang lingkup versi pertama disetujui.
+- Alur riset dan standar bukti disepakati.
+- Kebutuhan multi-user ditetapkan secara eksplisit.
+- Batas pengendalian biaya ditentukan.
+- Risiko dan persyaratan keamanan awal ditinjau.
+- Persyaratan utama dapat dipetakan ke pengujian.
+- Keputusan yang belum final diberi pemilik atau tahap penyelesaian.
+
+Status akhir dokumen ini: Draft v0.1.
+
+Dokumen ini merupakan rancangan persyaratan produk, bukan bukti bahwa implementasi, integrasi, atau pengujian telah dilakukan.
